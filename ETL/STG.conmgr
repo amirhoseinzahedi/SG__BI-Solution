@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="STG"
+  DTS:DTSID="{EA3A70F1-925C-42A7-9583-9795588FAAEF}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=AMIRHOSEIN-LPC\SQLSERVER2022;Initial Catalog=STG_Adventure;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-DIM_PRODUCT-{EA3A70F1-925C-42A7-9583-9795588FAAEF}AMIRHOSEIN-LPC\SQLSERVER2022.STG_Adventure;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

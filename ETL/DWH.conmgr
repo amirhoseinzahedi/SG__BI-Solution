@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DWH"
+  DTS:DTSID="{7964A461-92E1-42E7-88F5-1EF42B81ACD5}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=AMIRHOSEIN-LPC\SQLSERVER2022;User ID=sa;Initial Catalog=DWH_Adventure;Provider=MSOLEDBSQL19.1;Persist Security Info=True;Use Encryption for Data=Optional;Trust Server Certificate=True;Application Name=SSIS-DIM_PRODUCT-{7964A461-92E1-42E7-88F5-1EF42B81ACD5}AMIRHOSEIN-LPC\SQLSERVER2022.DWH_Adventure.sa;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9cdAz2ohb0ONlwquk6jtUQAAAAACAAAAAAAQZgAAAAEAACAAAAD90PGCV1Kf1AerzFKlqb/lI3iXdipKnsNhqGgrvI+h2gAAAAAOgAAAAAIAACAAAADekWBKk+OCo0vEP+Diz8C+UHN73ojnb+xG/GIK22Bu0IAAAADsWXtVz8HVz2TI5CPjoyxYGkqS8nZVxLVJTdye7AAI1GO9wMMqGU6eYVl4OHUtub25sbyP8YJT71hU4BwWZr53VcJP445ZUfaAU7UuyBM1CWLj4fGEK40XqbpIuUzqWXL11uKL5LIyni0E+KoCuk/qx7Kc0p5nQds3vVrTjw7d8kAAAABcGD9/AFGWIOueXUiqvr08ufkw6nUazhf1Sl+aC5pstfcTPA9eg3DC/5k4Vagh4sI0WIbarwOWJZ943fPrKShz</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
