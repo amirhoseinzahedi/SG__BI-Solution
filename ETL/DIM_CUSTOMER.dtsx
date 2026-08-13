@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DIM_CUSTOMER"
   DTS:PackageType="5"
-  DTS:VersionBuild="161"
-  DTS:VersionGUID="{7D77CAAE-A337-43FE-A52E-29D2BA3C0381}">
+  DTS:VersionBuild="175"
+  DTS:VersionGUID="{465A5AB5-1097-4A5C-A04F-B0338347E5F5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -93,6 +93,8 @@ SELECT
             <DTS:Variable
               DTS:CreationName=""
               DTS:DTSID="{20533036-950A-4F9C-BE9E-CC700B530D29}"
+              DTS:EvaluateAsExpression="True"
+              DTS:Expression="&quot;SELECT&#xA;&#x9;c.CustomerID,&#xA;&#x9;c.PersonID,&#xA;&#x9;c.StoreID,&#xA;&#x9;c.TerritoryID,&#xA;&#x9;c.AccountNumber,&#xA;&#xA;&#x9;p.PersonType,&#xA;&#x9;p.Title,&#xA;&#x9;p.FirstName,&#xA;&#x9;p.MiddleName,&#xA;&#x9;p.LastName,&#xA;&#x9;p.Suffix,&#xA;&#xA;&#x9;s.Name AS StoreName,&#xA;&#xA;&#x9;t.Name AS TerritoryName,&#xA;&#x9;t.CountryRegionCode,&#xA;&#x9;t.[Group] AS TerritoryGroup&#xA;&#xA;FROM &#xA;&#x9;Sales.Customer AS c&#xA;&#xA;&#x9;LEFT JOIN Person.Person AS p ON c.PersonID = p.BusinessEntityID&#xA;&#x9;LEFT JOIN Sales.Store AS s ON c.StoreID = s.BusinessEntityID&#xA;&#x9;LEFT JOIN Sales.SalesTerritory AS t ON c.TerritoryID = t.TerritoryID&#xA; &quot;&#xA;+ (@[$Package::LoadingType]!=3?&quot;&quot;:&quot;WHERE c.ModifiedDate&gt;=DATEADD(DAY, -1, GETDATE())&quot;)"
               DTS:IncludeInDebugDump="2345"
               DTS:Namespace="User"
               DTS:ObjectName="varExtractCustomer">
@@ -123,7 +125,7 @@ FROM
 	LEFT JOIN Person.Person AS p ON c.PersonID = p.BusinessEntityID
 	LEFT JOIN Sales.Store AS s ON c.StoreID = s.BusinessEntityID
 	LEFT JOIN Sales.SalesTerritory AS t ON c.TerritoryID = t.TerritoryID
- </DTS:VariableValue>
+ WHERE c.ModifiedDate&gt;=DATEADD(DAY, -1, GETDATE())</DTS:VariableValue>
             </DTS:Variable>
           </DTS:Variables>
           <DTS:ObjectData>
@@ -1088,9 +1090,9 @@ SELECT [Id]
       ,[FirstName] = ?
       ,[MiddleName] = ?
       ,[LastName] = ?
-      ,[Suffix] = ?--7
+      ,[Suffix] = ?
       ,[StoreName] = ?
-      ,[TerritoryCode] = ?
+      ,[TerritoryID] = ?
       ,[TerritoryName] = ?
       ,[CountryRegionCode] = ?
       ,[TerritoryGroup] = ?
@@ -1236,11 +1238,11 @@ SELECT [Id]
                           externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLECMD-Update_DWH_DIM_Customer.Inputs[OLE DB Command Input].ExternalColumns[Param_16]"
                           lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[DataSourceID]" />
                         <inputColumn
-                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLECMD-Update_DWH_DIM_Customer.Inputs[OLE DB Command Input].Columns[Id]"
+                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLECMD-Update_DWH_DIM_Customer.Inputs[OLE DB Command Input].Columns[DWH_Id]"
                           cachedDataType="i4"
-                          cachedName="Id"
+                          cachedName="DWH_Id"
                           externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLECMD-Update_DWH_DIM_Customer.Inputs[OLE DB Command Input].ExternalColumns[Param_17]"
-                          lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[Id]" />
+                          lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[DWH_Id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1666,12 +1668,6 @@ SELECT [Id]
                           externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[BKAccountNumber]"
                           lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[AccountNumber]" />
                         <inputColumn
-                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
-                          cachedDataType="i4"
-                          cachedName="TerritoryID"
-                          externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
-                          lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
-                        <inputColumn
                           refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].Columns[DataSourceName]"
                           cachedDataType="wstr"
                           cachedLength="25"
@@ -1752,10 +1748,6 @@ SELECT [Id]
                           length="100"
                           name="StoreName" />
                         <externalMetadataColumn
-                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryCode]"
-                          dataType="i4"
-                          name="TerritoryCode" />
-                        <externalMetadataColumn
                           refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryName]"
                           dataType="wstr"
                           length="50"
@@ -1797,6 +1789,10 @@ SELECT [Id]
                           dataType="wstr"
                           length="255"
                           name="SysDataSourceID" />
+                        <externalMetadataColumn
+                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -5778,7 +5774,7 @@ where [refTable].[BKAccountNumber] = ?</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
           Size="160,42"
           Id="Package\EXTRACT\DFT-Extract Data"
@@ -5792,7 +5788,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="137.375,78.6666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,48.0000000000003"
               Start="0,0"
               End="0,40.5000000000003">
@@ -5833,7 +5829,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="146.722222222222,52.7777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,45.6666666666666"
               Start="0,0"
               End="0,38.1666666666666">
@@ -5855,7 +5851,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="148.111111111111,140.444444444444">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,68"
               Start="0,0"
               End="0,60.5">
@@ -5892,7 +5888,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="146.055555555556,88.0555555555557">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,23.9444444444443"
               Start="0,0"
               End="0,16.4444444444443">
@@ -5921,7 +5917,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="361.388888888889,313.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,39.7222222222221"
               Start="0,0"
               End="0,32.2222222222221">
@@ -5943,7 +5939,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="362.388888888889,602.111111111111">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="0,50.6666666666669"
               Start="0,0"
               End="0,43.1666666666669">
@@ -6035,7 +6031,7 @@ where [refTable].[BKAccountNumber] = ?</property>
     design-time-name="Package\EXTRACT\DFT-Extract Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="204,42"
           Id="Package\EXTRACT\DFT-Extract Data\OLEDST-LoadStgCustomer"
@@ -6063,9 +6059,7 @@ where [refTable].[BKAccountNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6110,37 +6104,37 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="431.428571428572,65.2857142857143" />
         <EdgeLayout
           Id="Package\LOAD\DFT-Load_DIM_Customer.Paths[Update]"
-          TopLeft="557.5,194.142857142857">
+          TopLeft="582,194.142857142857">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="176.857142857143,46.5714285714286"
+              EndConnector="152.357142857143,46.571428571429"
               Start="0,0"
-              End="176.857142857143,39.0714285714286">
+              End="152.357142857143,39.071428571429">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19.2857142857143" />
+                    End="0,14.9140667761359" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19.2857142857143"
-                    Point2="0,23.2857142857143"
-                    Point3="4,23.2857142857143" />
+                    Point1="0,14.9140667761359"
+                    Point2="0,18.9140667761359"
+                    Point3="4,18.9140667761359" />
                   <mssgle:LineSegment
-                    End="172.857142857143,23.2857142857143" />
+                    End="148.357142857143,18.9140667761359" />
                   <mssgle:CubicBezierSegment
-                    Point1="172.857142857143,23.2857142857143"
-                    Point2="176.857142857143,23.2857142857143"
-                    Point3="176.857142857143,27.2857142857143" />
+                    Point1="148.357142857143,18.9140667761359"
+                    Point2="152.357142857143,18.9140667761359"
+                    Point3="152.357142857143,22.9140667761359" />
                   <mssgle:LineSegment
-                    End="176.857142857143,39.0714285714286" />
+                    End="152.357142857143,39.071428571429" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="72.1482784598215,28.2857142857143,32.5605859375,11.609375"
+              BoundingBox="51.0735714285715,23.9140667761359,50.21,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

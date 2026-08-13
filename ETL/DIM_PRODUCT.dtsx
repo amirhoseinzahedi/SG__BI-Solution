@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DIM_PRODUCT"
   DTS:PackageType="5"
-  DTS:VersionBuild="114"
-  DTS:VersionGUID="{F8CA1741-0308-471C-8C1C-4CA96331E735}">
+  DTS:VersionBuild="116"
+  DTS:VersionGUID="{5CD2A08E-A655-4458-A015-ED6BD1FEE3AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -4796,25 +4796,25 @@ where [refTable].[BKProductNumber] = ?</property>
         <NodeLayout
           Size="160,42"
           Id="Package\Extract\DFT-Extract Data"
-          TopLeft="121.25,148.666666666667" />
+          TopLeft="120.75,148.166666666667" />
         <NodeLayout
           Size="178.5,42"
           Id="Package\Extract\SQL-TruncateStaging"
           TopLeft="113.75,52.9166666666667" />
         <EdgeLayout
           Id="Package\Extract.PrecedenceConstraints[Constraint]"
-          TopLeft="202.125,94.9166666666667">
+          TopLeft="201.875,94.9166666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,53.75"
+              EndConnector="0,53.2500000000003"
               Start="0,0"
-              End="0,46.25">
+              End="0,45.7500000000003">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,46.25" />
+                    End="0,45.7500000000003" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4940,18 +4940,18 @@ where [refTable].[BKProductNumber] = ?</property>
           TopLeft="1000.29166666667,650" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="1204.90972222222,612.944444444445">
+          TopLeft="1204.90972222223,612.944444444445">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,37.0555555555554"
+              EndConnector="0,37.055555555555"
               Start="0,0"
-              End="0,29.5555555555554">
+              End="0,29.555555555555">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5555555555554" />
+                    End="0,29.555555555555" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4989,7 +4989,7 @@ where [refTable].[BKProductNumber] = ?</property>
     design-time-name="Package\Extract\DFT-Extract Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="196,42"
           Id="Package\Extract\DFT-Extract Data\OLESRC - ExtractProduct"
@@ -5003,7 +5003,7 @@ where [refTable].[BKProductNumber] = ?</property>
           TopLeft="359.5,95.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="0,62"
               Start="0,0"
               End="0,54.5">
@@ -5017,9 +5017,7 @@ where [refTable].[BKProductNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
