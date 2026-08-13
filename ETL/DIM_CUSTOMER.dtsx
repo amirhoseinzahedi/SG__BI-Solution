@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="DIM_CUSTOMER"
   DTS:PackageType="5"
-  DTS:VersionBuild="175"
-  DTS:VersionGUID="{465A5AB5-1097-4A5C-A04F-B0338347E5F5}">
+  DTS:VersionBuild="177"
+  DTS:VersionGUID="{A98459EC-E6BE-4654-BDD7-ECBB3328B94D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:PackageParameters>
@@ -1687,6 +1687,12 @@ SELECT [Id]
                           cachedName="InsertDate"
                           externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[SysInsertDate]"
                           lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[InsertDate]" />
+                        <inputColumn
+                          refId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].Columns[TerritoryID]"
+                          cachedDataType="i4"
+                          cachedName="TerritoryID"
+                          externalMetadataColumnId="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer.Inputs[OLE DB Destination Input].ExternalColumns[TerritoryID]"
+                          lineageId="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer.Outputs[OLE DB Source Output].Columns[TerritoryID]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5811,7 +5817,7 @@ where [refTable].[BKAccountNumber] = ?</property>
           PanelSize="278.5,223.5"
           Size="278.5,266.5"
           Id="Package\EXTRACT"
-          TopLeft="222.388888888889,47.3888888888889" />
+          TopLeft="222.388888888889,46.3888888888889" />
         <NodeLayout
           Size="200.5,42"
           Id="Package\LOAD\DFT-Load_DIM_Customer"
@@ -5914,18 +5920,18 @@ where [refTable].[BKAccountNumber] = ?</property>
           TopLeft="215.388888888889,353.611111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="361.388888888889,313.888888888889">
+          TopLeft="361.388888888889,312.888888888889">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="0,39.7222222222221"
+              EndConnector="0,40.7222222222221"
               Start="0,0"
-              End="0,32.2222222222221">
+              End="0,33.2222222222221">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.2222222222221" />
+                    End="0,33.2222222222221" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6087,6 +6093,10 @@ where [refTable].[BKAccountNumber] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="247,42"
+          Id="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer"
+          TopLeft="431.428571428572,65.2857142857143" />
+        <NodeLayout
           Size="221,42"
           Id="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer"
           TopLeft="220,232.142857142857" />
@@ -6098,10 +6108,6 @@ where [refTable].[BKAccountNumber] = ?</property>
           Size="155,42"
           Id="Package\LOAD\DFT-Load_DIM_Customer\Conditional Split"
           TopLeft="480,152.142857142857" />
-        <NodeLayout
-          Size="247,42"
-          Id="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer"
-          TopLeft="431.428571428572,65.2857142857143" />
         <EdgeLayout
           Id="Package\LOAD\DFT-Load_DIM_Customer.Paths[Update]"
           TopLeft="582,194.142857142857">
@@ -6200,7 +6206,7 @@ where [refTable].[BKAccountNumber] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer">
+    design-time-name="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6213,7 +6219,7 @@ where [refTable].[BKAccountNumber] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\LOAD\DFT-Load_DIM_Customer\OLESRV_Transform_DIM_Customer">
+    design-time-name="Package\LOAD\DFT-Load_DIM_Customer\OLEDST-DWH_DIM_Customer">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

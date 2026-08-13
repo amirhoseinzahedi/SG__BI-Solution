@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">AMIRHOSEIN-LPC</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9cdAz2ohb0ONlwquk6jtUQAAAAACAAAAAAAQZgAAAAEAACAAAACYPZsYUjEt+79V51cjuX5nilSu4EBiK5lX1wN2BwLEKwAAAAAOgAAAAAIAACAAAAAHVv4INU8LDLTDL4PsqyzLqR2412KOPYNEyp0+mez6RZAAAAAV058pPR7vbTySBS00+O0FX3y0Qb/OFnBwUwGu8HeSZjfsgG1cFmi/5owO/Wx0D2W5KJgJSKeKpKC3b2XUn1YaU42RkkwYs1B2FYHeW7m1xDLpyElJQ9Fw7zxZJPq9+VUIhq6ku19QjhAMmNE+L1Uz27G2NJ7mVYxs9HAbNRgeaCZI+gLKRiERpkTmsZkJ2ylAAAAA47osRoOa74amUkfPndb7GSJioMqatfgv9Nex60RnB0H8ajjBG3BnqrRbml76tptTbnYAvMXvrjY+S23tilesAA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA9cdAz2ohb0ONlwquk6jtUQAAAAACAAAAAAAQZgAAAAEAACAAAABeXohGDUnuTpOU71v/WX+OBVXN+Pd8qvE5X2Hi9SUDEwAAAAAOgAAAAAIAACAAAAB4eIRvnXi94W7VWueQF1A8W7bH6R1xl8QMlAM7a+xZGpAAAAAtV1mJsiOrnwI8QbH4E02mHKcJU6V2YLRWWl21rFn1PPm0yxxLbub18tu+3ql5MOFqIz03pH/3e9USlOVl5JGI93o2yFESsr38SEuvRvALux3SARVN1gLN52nUd6EJwJz7RL4uh5uPCtzEknSAymQlhL4ldk7SRxOoXTDNaRscfp9LiY/mV/zEhskm5pjnZn5AAAAAl6aLz643uOXaOTrIWAcgvGuc5J/ncL24XoZClTxhe1+eBCa/7InJTdw9+tvy8GThcEBASAfmcMFkhd9tbzNh4w==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="DIM_PRODUCT.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="FACT_SALE.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="DIM_CUSTOMER.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DIM_TERRITORY.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="OLTP_Source.conmgr" />
@@ -584,6 +585,37 @@
                 <SSIS:Parameter SSIS:Name="LoadingType">
                   <SSIS:Properties>
                     <SSIS:Property SSIS:Name="ID">{336F79E4-4CC2-4DB4-812E-F6B151C32701}</SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">1=FullExtract+FullLoad/ 2=FullExtract+IncrementalLoad/ 3=IncrementalExtract+IncrementalLoad</SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">3</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">9</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DIM_TERRITORY.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{34FBB9B1-C52B-4F68-9796-464A58F73665}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">DIM_TERRITORY</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">216</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{499276DF-2A0A-4B58-B9C1-5D5A501CBD31}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="LoadingType">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">{B975038F-7475-475A-BACF-185679385F83}</SSIS:Property>
                     <SSIS:Property SSIS:Name="CreationName">
                     </SSIS:Property>
                     <SSIS:Property SSIS:Name="Description">1=FullExtract+FullLoad/ 2=FullExtract+IncrementalLoad/ 3=IncrementalExtract+IncrementalLoad</SSIS:Property>
